@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AN5 ORM — Lightweight ORM for SQL Server, PostgreSQL & Google Sheets</title>
+  <meta name="description" content="AN5 ORM is a lightweight, type-safe ORM supporting TypeScript, Python, and .NET for SQL Server, PostgreSQL, MySQL, SQLite, and Google Sheets.">
+  <meta property="og:title" content="AN5 ORM — Lightweight Multi-Platform ORM">
+  <meta property="og:description" content="Type-safe database access for TypeScript, Python & .NET. Works with SQL Server, PostgreSQL, MySQL, SQLite and Google Sheets.">
+  <meta property="og:url" content="https://an5orm.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────────────────────────── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-badge">AN5</span>
+        <span class="logo-text">ORM</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#quickstart">Quick Start</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#extension">VS Code</a></li>
+        <li><a href="https://github.com/an5ORM" target="_blank" class="nav-github">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          GitHub
+        </a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="hero-glow glow-3"></div>
+    <div class="container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Open Source · MIT License
+      </div>
+      <h1 class="hero-title">
+        Lightweight ORM<br>
+        <span class="gradient-text">for Every Platform</span>
+      </h1>
+      <p class="hero-subtitle">
+        Type-safe database access for <strong>TypeScript</strong>, <strong>Python</strong> &amp; <strong>.NET</strong>.<br>
+        SQL Server · PostgreSQL · MySQL · SQLite · Google Sheets
+      </p>
+      <div class="hero-actions">
+        <a href="#quickstart" class="btn btn-primary">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Get Started
+        </a>
+        <a href="https://github.com/an5ORM" target="_blank" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Languages</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Databases</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">MIT</span>
+          <span class="stat-label">License</span>
+        </div>
+      </div>
+    </div>
+    <!-- Floating code preview -->
+    <div class="hero-code-float">
+      <div class="code-window">
+        <div class="code-titlebar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="code-filename">an5Orm.config.js</span>
+        </div>
+        <pre class="code-content"><span class="c-keyword">import</span> <span class="c-var">An5Adapter</span> <span class="c-keyword">from</span> <span class="c-str">'@an5/adapters'</span><span class="c-punct">;</span>
+
+<span class="c-keyword">const</span> <span class="c-var">db</span> <span class="c-op">=</span> <span class="c-keyword">new</span> <span class="c-fn">An5Adapter</span><span class="c-punct">({</span>
+  <span class="c-prop">provider</span><span class="c-punct">:</span> <span class="c-str">'postgres'</span><span class="c-punct">,</span>
+  <span class="c-prop">connectionString</span><span class="c-punct">:</span> <span class="c-var">process</span><span class="c-punct">.</span><span class="c-prop">env</span><span class="c-punct">.</span><span class="c-var">DATABASE_URL</span>
+<span class="c-punct">});</span>
+
+<span class="c-comment">// Type-safe query</span>
+<span class="c-keyword">const</span> <span class="c-var">users</span> <span class="c-op">=</span> <span class="c-keyword">await</span> <span class="c-var">db</span>
+  <span class="c-punct">.</span><span class="c-fn">table</span><span class="c-punct">(</span><span class="c-str">'User'</span><span class="c-punct">)</span>
+  <span class="c-punct">.</span><span class="c-fn">findMany</span><span class="c-punct">({</span>
+    <span class="c-prop">where</span><span class="c-punct">:</span> <span class="c-punct">{</span> <span class="c-prop">active</span><span class="c-punct">:</span> <span class="c-bool">true</span> <span class="c-punct">},</span>
+    <span class="c-prop">orderBy</span><span class="c-punct">:</span> <span class="c-punct">{</span> <span class="c-prop">createdAt</span><span class="c-punct">:</span> <span class="c-str">'desc'</span> <span class="c-punct">}</span>
+  <span class="c-punct">});</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES ──────────────────────────────────────────────────────────── -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why AN5 ORM</span>
+        <h2 class="section-title">Built for modern apps</h2>
+        <p class="section-subtitle">Everything you need to work with databases across all your stacks.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          </div>
+          <h3>Blazing Fast</h3>
+          <p>Zero-overhead query execution. Minimal dependencies. Works directly on your existing DB driver.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+          </div>
+          <h3>Fully Typed</h3>
+          <p>First-class TypeScript support with auto-generated types from your <code>.an5</code> schema files.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"/></svg>
+          </div>
+          <h3>Multi-Platform</h3>
+          <p>One schema, multiple languages. Generate clients for TypeScript, Python, and .NET simultaneously.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253M3 12a8.959 8.959 0 00.284 2.253"/></svg>
+          </div>
+          <h3>Google Sheets Mode</h3>
+          <p>Use Google Sheets as a lightweight database backend — ideal for MVPs, no-code tools, and browser apps.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1 1 .03 2.798-1.348 2.442l-1.044-.25a4.5 4.5 0 00-2.12-.088l-2.19.44a4.5 4.5 0 01-2.12-.088l-1.044-.25c-1.378-.356-2.349-1.442-1.348-2.442L5 14.5"/></svg>
+          </div>
+          <h3>AI-Powered Agent</h3>
+          <p>Built-in AI agent tools for schema exploration, SQL generation, and intelligent code review tasks.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-pink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+          </div>
+          <h3>Rate-Limit Safe</h3>
+          <p>Token-bucket rate limiter + concurrency control + exponential backoff with full jitter built-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── QUICK START ────────────────────────────────────────────────────────── -->
+  <section class="section section-dark" id="quickstart">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Quick Start</span>
+        <h2 class="section-title">Up and running in minutes</h2>
+      </div>
+      <div class="quickstart-tabs">
+        <button class="tab-btn active" data-tab="typescript">TypeScript</button>
+        <button class="tab-btn" data-tab="python">Python</button>
+        <button class="tab-btn" data-tab="dotnet">.NET</button>
+        <button class="tab-btn" data-tab="sheets">Google Sheets</button>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel active" id="tab-typescript">
+          <pre class="code-block"><span class="c-comment"># Install</span>
+<span class="c-var">npm</span> install <span class="c-str">@an5/orm @an5/adapters</span>
+
+<span class="c-comment"># Define schema (schema.an5)</span>
+<span class="c-keyword">model</span> <span class="c-fn">User</span> <span class="c-punct">{</span>
+  id        String  <span class="c-keyword">@id</span>
+  name      String
+  email     String  <span class="c-keyword">@unique</span>
+  createdAt DateTime
+<span class="c-punct">}</span>
+
+<span class="c-comment"># Generate client</span>
+<span class="c-var">npx</span> an5 generate</pre>
+        </div>
+        <div class="tab-panel" id="tab-python">
+          <pre class="code-block"><span class="c-comment"># Install</span>
+<span class="c-var">pip</span> install <span class="c-str">an5-adapters</span>
+
+<span class="c-comment"># Use adapter</span>
+<span class="c-keyword">from</span> an5_adapters <span class="c-keyword">import</span> An5Adapter
+
+db <span class="c-op">=</span> <span class="c-fn">An5Adapter</span>(connection_string<span class="c-op">=</span><span class="c-str">"Server=...;Database=..."</span>)
+
+users <span class="c-op">=</span> <span class="c-keyword">await</span> db.<span class="c-fn">find_many</span>(
+  table<span class="c-op">=</span><span class="c-str">"User"</span>,
+  where<span class="c-op">=</span>{<span class="c-str">"active"</span>: <span class="c-bool">True</span>}
+)</pre>
+        </div>
+        <div class="tab-panel" id="tab-dotnet">
+          <pre class="code-block"><span class="c-comment">// Copy An5Adapter.cs to your project</span>
+<span class="c-comment">// Available in @an5/adapters package</span>
+
+<span class="c-keyword">var</span> <span class="c-var">db</span> <span class="c-op">=</span> <span class="c-keyword">new</span> <span class="c-fn">An5Adapter</span>(
+  <span class="c-str">"Server=.;Database=mydb;Trusted_Connection=true"</span>
+);
+
+<span class="c-keyword">var</span> <span class="c-var">users</span> <span class="c-op">=</span> <span class="c-keyword">await</span> db.<span class="c-fn">FindManyAsync</span>(
+  <span class="c-str">"User"</span>,
+  <span class="c-keyword">new</span> { active <span class="c-op">=</span> <span class="c-bool">true</span> }
+);</pre>
+        </div>
+        <div class="tab-panel" id="tab-sheets">
+          <pre class="code-block"><span class="c-comment">// Browser-compatible! No Node.js builtins</span>
+<span class="c-keyword">import</span> { <span class="c-var">An5SheetsAdapter</span> } <span class="c-keyword">from</span> <span class="c-str">'@an5/adapters/browser'</span>;
+
+<span class="c-keyword">const</span> <span class="c-var">db</span> <span class="c-op">=</span> <span class="c-keyword">new</span> <span class="c-fn">An5SheetsAdapter</span>({
+  <span class="c-prop">spreadsheetId</span>: <span class="c-str">'YOUR_SHEET_ID'</span>,
+  <span class="c-prop">accessToken</span>: <span class="c-str">'YOUR_OAUTH_TOKEN'</span>
+  <span class="c-comment">// or apiKey: 'YOUR_API_KEY'</span>
+});
+
+<span class="c-keyword">const</span> <span class="c-var">rows</span> <span class="c-op">=</span> <span class="c-keyword">await</span> <span class="c-var">db</span>.<span class="c-fn">table</span>(<span class="c-str">'Products'</span>).<span class="c-fn">findMany</span>();</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PACKAGES ──────────────────────────────────────────────────────────── -->
+  <section class="section" id="packages">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Packages</span>
+        <h2 class="section-title">Available everywhere</h2>
+        <p class="section-subtitle">Published on npm, PyPI, and the VS Code Marketplace.</p>
+      </div>
+      <div class="packages-grid">
+        <a href="https://www.npmjs.com/package/@an5/orm" target="_blank" class="pkg-card">
+          <div class="pkg-registry npm">npm</div>
+          <div class="pkg-info">
+            <div class="pkg-name">@an5/orm</div>
+            <div class="pkg-desc">Core ORM runtime with proxy-based client, CRUD operations, vector search &amp; schema generation.</div>
+          </div>
+          <code class="pkg-install">npm i @an5/orm</code>
+        </a>
+        <a href="https://www.npmjs.com/package/@an5/adapters" target="_blank" class="pkg-card">
+          <div class="pkg-registry npm">npm</div>
+          <div class="pkg-info">
+            <div class="pkg-name">@an5/adapters</div>
+            <div class="pkg-desc">Standalone adapters for TypeScript, Python, .NET &amp; Google Sheets with browser support.</div>
+          </div>
+          <code class="pkg-install">npm i @an5/adapters</code>
+        </a>
+        <a href="https://www.npmjs.com/package/@an5/agent" target="_blank" class="pkg-card">
+          <div class="pkg-registry npm">npm</div>
+          <div class="pkg-info">
+            <div class="pkg-name">@an5/agent</div>
+            <div class="pkg-desc">AI agent library with tools for schema exploration, SQL generation and LLM-powered database understanding.</div>
+          </div>
+          <code class="pkg-install">npm i @an5/agent</code>
+        </a>
+        <a href="https://pypi.org/project/an5-adapters/" target="_blank" class="pkg-card">
+          <div class="pkg-registry pypi">PyPI</div>
+          <div class="pkg-info">
+            <div class="pkg-name">an5-adapters</div>
+            <div class="pkg-desc">Python adapter for SQL Server, PostgreSQL, MySQL with async support and Prisma-compatible API.</div>
+          </div>
+          <code class="pkg-install">pip install an5-adapters</code>
+        </a>
+        <a href="https://pypi.org/project/an5-orm/" target="_blank" class="pkg-card">
+          <div class="pkg-registry pypi">PyPI</div>
+          <div class="pkg-info">
+            <div class="pkg-name">an5-orm</div>
+            <div class="pkg-desc">Full ORM runtime for Python with schema generation, migrations, and type-safe query building.</div>
+          </div>
+          <code class="pkg-install">pip install an5-orm</code>
+        </a>
+        <a href="https://open-vsx.org/extension/an5orm/an5-orm-vscode" target="_blank" class="pkg-card">
+          <div class="pkg-registry vscode">VS Code</div>
+          <div class="pkg-info">
+            <div class="pkg-name">AN5 ORM Schema Tooling</div>
+            <div class="pkg-desc">Syntax highlighting, snippets, formatting and schema validation for <code>.an5</code> schema files.</div>
+          </div>
+          <code class="pkg-install">ext install an5orm.an5-orm-vscode</code>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VSCODE EXTENSION ──────────────────────────────────────────────────── -->
+  <section class="section section-dark" id="extension">
+    <div class="container ext-container">
+      <div class="ext-info">
+        <span class="section-tag">VS Code Extension</span>
+        <h2 class="section-title">Schema tooling<br>for your editor</h2>
+        <p class="section-subtitle" style="text-align:left;">
+          The <strong>AN5 ORM Schema Tooling</strong> extension provides rich support for <code>.an5</code> schema files in Visual Studio Code, Cursor, and VSCodium.
+        </p>
+        <ul class="ext-features">
+          <li>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Syntax highlighting for <code>.an5</code> files
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Code snippets (model, field, relation)
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Status bar: Generate, Push, Pull
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Works in VS Code, Cursor &amp; VSCodium
+          </li>
+        </ul>
+        <div class="ext-actions">
+          <a href="https://open-vsx.org/extension/an5orm/an5-orm-vscode" target="_blank" class="btn btn-primary">Install Extension</a>
+          <a href="https://github.com/an5ORM/an5OrmVScode" target="_blank" class="btn btn-outline">Source Code</a>
+        </div>
+      </div>
+      <div class="ext-preview">
+        <div class="code-window">
+          <div class="code-titlebar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="code-filename">schema.an5</span>
+          </div>
+          <pre class="code-content"><span class="c-comment">// AN5 Schema Definition</span>
+
+<span class="c-keyword">datasource</span> <span class="c-var">db</span> <span class="c-punct">{</span>
+  <span class="c-prop">provider</span> <span class="c-op">=</span> <span class="c-str">"sqlserver"</span>
+  <span class="c-prop">url</span>      <span class="c-op">=</span> <span class="c-var">env</span><span class="c-punct">(</span><span class="c-str">"DATABASE_URL"</span><span class="c-punct">)</span>
+<span class="c-punct">}</span>
+
+<span class="c-keyword">model</span> <span class="c-fn">Product</span> <span class="c-punct">{</span>
+  id        <span class="c-type">String</span>   <span class="c-keyword">@id</span>
+  name      <span class="c-type">String</span>
+  price     <span class="c-type">Float</span>
+  stock     <span class="c-type">Int</span>      <span class="c-keyword">@default</span><span class="c-punct">(</span><span class="c-num">0</span><span class="c-punct">)</span>
+  category  <span class="c-type">String</span><span class="c-punct">?</span>
+  createdAt <span class="c-type">DateTime</span> <span class="c-keyword">@default</span><span class="c-punct">(</span><span class="c-fn">now</span><span class="c-punct">())</span>
+
+  <span class="c-keyword">@@map</span><span class="c-punct">(</span><span class="c-str">"Products"</span><span class="c-punct">)</span>
+  <span class="c-keyword">@@index</span><span class="c-punct">([</span><span class="c-var">category</span><span class="c-punct">])</span>
+<span class="c-punct">}</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DATABASES ─────────────────────────────────────────────────────────── -->
+  <section class="section" id="databases">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Compatibility</span>
+        <h2 class="section-title">Works with your database</h2>
+      </div>
+      <div class="db-grid">
+        <div class="db-card">
+          <div class="db-logo">🗄️</div>
+          <div class="db-name">SQL Server</div>
+          <div class="db-status status-stable">Stable</div>
+        </div>
+        <div class="db-card">
+          <div class="db-logo">🐘</div>
+          <div class="db-name">PostgreSQL</div>
+          <div class="db-status status-stable">Stable</div>
+        </div>
+        <div class="db-card">
+          <div class="db-logo">🐬</div>
+          <div class="db-name">MySQL</div>
+          <div class="db-status status-stable">Stable</div>
+        </div>
+        <div class="db-card">
+          <div class="db-logo">🪶</div>
+          <div class="db-name">SQLite</div>
+          <div class="db-status status-stable">Stable</div>
+        </div>
+        <div class="db-card">
+          <div class="db-logo">📊</div>
+          <div class="db-name">Google Sheets</div>
+          <div class="db-status status-beta">Browser Ready</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <span class="logo-badge">AN5</span>
+          <span class="logo-text">ORM</span>
+        </a>
+        <p>Lightweight, type-safe ORM for every platform.</p>
+        <div class="footer-social">
+          <a href="https://github.com/an5ORM" target="_blank" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </a>
+          <a href="https://open-vsx.org/extension/an5orm/an5-orm-vscode" target="_blank" aria-label="Open VSX">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 5.75c0-2.071 1.679-3.75 3.75-3.75h13.5c2.071 0 3.75 1.679 3.75 3.75v12.5c0 2.071-1.679 3.75-3.75 3.75H5.25c-2.071 0-3.75-1.679-3.75-3.75V5.75zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM8.75 12a3.25 3.25 0 116.5 0 3.25 3.25 0 01-6.5 0z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Packages</h4>
+          <ul>
+            <li><a href="https://github.com/an5ORM/an5Orm">an5Orm</a></li>
+            <li><a href="https://github.com/an5ORM/an5Adapters">an5Adapters</a></li>
+            <li><a href="https://github.com/an5ORM/an5Agent">an5Agent</a></li>
+            <li><a href="https://github.com/an5ORM/an5OrmVScode">VS Code Extension</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Registries</h4>
+          <ul>
+            <li><a href="https://www.npmjs.com/~an5orm" target="_blank">npm</a></li>
+            <li><a href="https://pypi.org/user/an5orm/" target="_blank">PyPI</a></li>
+            <li><a href="https://open-vsx.org/namespace/an5orm" target="_blank">Open VSX</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://github.com/an5ORM" target="_blank">GitHub Org</a></li>
+            <li><a href="https://github.com/an5ORM/an5/issues" target="_blank">Issues</a></li>
+            <li><a href="https://github.com/an5ORM/an5/blob/main/LICENSE" target="_blank">MIT License</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AN5 ORM · Built with ❤️ · MIT License</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
