@@ -7,13 +7,29 @@ window.addEventListener('scroll', () => {
 // ─── Mobile nav toggle ────────────────────────────────────────────────────────
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.querySelector('.nav-links');
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-// Close on link click
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  });
+
+  // Close on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+    }
+  });
+}
 
 // ─── Tab switching ────────────────────────────────────────────────────────────
 document.querySelectorAll('.tab-btn').forEach(btn => {
