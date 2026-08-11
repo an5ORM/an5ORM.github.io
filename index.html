@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AN5 ORM — Lightweight ORM for SQL Server, PostgreSQL & Google Sheets</title>
-  <meta name="description" content="AN5 ORM is a lightweight, type-safe ORM supporting TypeScript, Python, and .NET for SQL Server, PostgreSQL, MySQL, SQLite, and Google Sheets.">
-  <meta property="og:title" content="AN5 ORM — Lightweight Multi-Platform ORM">
-  <meta property="og:description" content="Type-safe database access for TypeScript, Python & .NET. Works with SQL Server, PostgreSQL, MySQL, SQLite and Google Sheets.">
+  <title>AN5 ORM · Lightweight Type-Safe ORM for TypeScript, Python, .NET & Golang</title>
+  <meta name="description" content="AN5 ORM is a lightweight, type-safe ORM supporting TypeScript, Python, .NET, and Golang for SQL Server, PostgreSQL, MySQL, SQLite, and Google Sheets.">
+  <meta property="og:title" content="AN5 ORM - Lightweight, Type-Safe ORM for Every Platform">
+  <meta property="og:description" content="Type-safe database access for TypeScript, Python, .NET & Golang. Works with SQL Server, PostgreSQL, MySQL, SQLite and Google Sheets.">
   <meta property="og:url" content="https://an5orm.github.io/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
 <body>
 
@@ -28,6 +29,7 @@
         <li><a href="#quickstart">Quick Start</a></li>
         <li><a href="#packages">Packages</a></li>
         <li><a href="#extension">VS Code</a></li>
+        <li><a href="https://an5orm.github.io/an5/">Docs</a></li>
         <li><a href="https://github.com/an5ORM" target="_blank" class="nav-github">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
           GitHub
@@ -61,6 +63,9 @@
         <a href="#quickstart" class="btn btn-primary">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           Get Started
+        </a>
+        <a href="https://an5orm.github.io/an5/" class="btn btn-outline">
+          Documentation
         </a>
         <a href="https://github.com/an5ORM" target="_blank" class="btn btn-outline">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
@@ -137,7 +142,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"/></svg>
           </div>
           <h3>Multi-Platform</h3>
-          <p>One schema, multiple languages. Generate clients for TypeScript, Python, and .NET simultaneously.</p>
+          <p>One schema, multiple languages. Generate clients for TypeScript, Python, .NET (C#), and Golang simultaneously.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon icon-green">
@@ -257,7 +262,7 @@ users <span class="c-op">=</span> <span class="c-keyword">await</span> db.<span 
           <div class="pkg-registry npm">npm</div>
           <div class="pkg-info">
             <div class="pkg-name">@an5/adapters</div>
-            <div class="pkg-desc">Standalone adapters for TypeScript, Python, .NET &amp; Google Sheets with browser support.</div>
+            <div class="pkg-desc">Standalone adapters for TypeScript, Python, .NET, Golang &amp; Google Sheets with browser support.</div>
           </div>
           <code class="pkg-install">npm i @an5/adapters</code>
         </a>
@@ -273,7 +278,7 @@ users <span class="c-op">=</span> <span class="c-keyword">await</span> db.<span 
           <div class="pkg-registry pypi">PyPI</div>
           <div class="pkg-info">
             <div class="pkg-name">an5-adapters</div>
-            <div class="pkg-desc">Python adapter for SQL Server, PostgreSQL, MySQL with async support and Prisma-compatible API.</div>
+            <div class="pkg-desc">Python adapter for SQL Server, PostgreSQL, MySQL with async support and type-safe query building API.</div>
           </div>
           <code class="pkg-install">pip install an5-adapters</code>
         </a>
