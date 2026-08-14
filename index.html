@@ -56,7 +56,7 @@
         <span class="gradient-text">for Every Platform</span>
       </h1>
       <p class="hero-subtitle">
-        Type-safe database access for <strong>TypeScript</strong>, <strong>Python</strong> &amp; <strong>.NET</strong>.<br>
+        Type-safe database access for <strong>TypeScript</strong>, <strong>Python</strong>, <strong>.NET</strong> &amp; <strong>Golang</strong>.<br>
         SQL Server · PostgreSQL · MySQL · SQLite · Google Sheets
       </p>
       <div class="hero-actions">
@@ -183,6 +183,7 @@
         <button class="tab-btn active" data-tab="typescript">TypeScript</button>
         <button class="tab-btn" data-tab="python">Python</button>
         <button class="tab-btn" data-tab="dotnet">.NET</button>
+        <button class="tab-btn" data-tab="golang">Golang</button>
         <button class="tab-btn" data-tab="sheets">Google Sheets</button>
       </div>
       <div class="tab-panels">
@@ -227,6 +228,20 @@ users <span class="c-op">=</span> <span class="c-keyword">await</span> db.<span 
   <span class="c-str">"User"</span>,
   <span class="c-keyword">new</span> { active <span class="c-op">=</span> <span class="c-bool">true</span> }
 );</pre>
+        </div>
+        <div class="tab-panel" id="tab-golang">
+          <pre class="code-block"><span class="c-comment">// Copy the golang/ sources from the</span>
+<span class="c-comment">// @an5/adapters package into your project</span>
+
+<span class="c-keyword">import</span> (
+  an5 <span class="c-str">"an5adapters"</span>
+  _ <span class="c-str">"github.com/denisenkom/go-mssqldb"</span>
+)
+
+<span class="c-var">db</span> <span class="c-op">:=</span> an5.<span class="c-fn">NewAn5Adapter</span>(sqlDB, <span class="c-str">"Server=.;Database=mydb;Trusted_Connection=true"</span>)
+
+<span class="c-comment">// Table client</span>
+<span class="c-var">users</span>, <span class="c-var">err</span> <span class="c-op">:=</span> db.<span class="c-fn">Table</span>(<span class="c-str">"User"</span>).<span class="c-fn">FindMany</span>(ctx, <span class="c-str">"active = ?"</span>, <span class="c-bool">true</span>)</pre>
         </div>
         <div class="tab-panel" id="tab-sheets">
           <pre class="code-block"><span class="c-comment">// Browser-compatible! No Node.js builtins</span>
