@@ -322,6 +322,7 @@ img { max-width: 100%; height: auto; }
 .npm { background: rgba(203,56,55,0.15); color: #f87171; }
 .pypi { background: rgba(56,189,248,0.12); color: var(--cyan); }
 .vscode { background: rgba(99,102,241,0.15); color: #818cf8; }
+.golang { background: rgba(0,173,216,0.15); color: #00add8; }
 .pkg-name { font-family: var(--mono); font-size: 0.95rem; font-weight: 600; color: var(--text); }
 .pkg-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
 .pkg-desc code { background: rgba(255,255,255,0.05); padding: 1px 5px; border-radius: 4px; font-size: 0.8rem; }
