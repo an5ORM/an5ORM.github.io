@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
 
@@ -216,7 +216,7 @@ npm run generate
 
 db <span class="c-op">=</span> <span class="c-fn">create_an5_adapter</span>(os.environ[<span class="c-str">"DATABASE_URL"</span>])
 
-users <span class="c-op">=</span> db.<span class="c-fn">table</span>(<span class="c-str">"User"</span>).<span class="c-fn">find_many</span>(where<span class="c-op">=</span>{<span class="c-str">"isActive"</span>: <span class="c-bool">True</span>})</pre>
+users <span class="c-op">=</span> db.<span class="c-prop">user</span>.<span class="c-fn">find_many</span>(where<span class="c-op">=</span>{<span class="c-str">"isActive"</span>: <span class="c-bool">True</span>})</pre>
         </div>
         <div class="tab-panel" id="tab-dotnet">
           <pre class="code-block"><span class="c-keyword">using</span> An5Orm<span class="c-punct">;</span>
@@ -266,7 +266,7 @@ ctx <span class="c-op">:=</span> context.Background()
   <span class="c-comment">// or apiKey: 'YOUR_API_KEY'</span>
 });
 
-<span class="c-keyword">const</span> <span class="c-var">rows</span> <span class="c-op">=</span> <span class="c-keyword">await</span> <span class="c-var">db</span>.<span class="c-fn">table</span>(<span class="c-str">'Products'</span>).<span class="c-fn">findMany</span>();</pre>
+<span class="c-keyword">const</span> <span class="c-var">rows</span> <span class="c-op">=</span> <span class="c-keyword">await</span> <span class="c-var">db</span>.<span class="c-prop">products</span>.<span class="c-fn">findMany</span>();</pre>
         </div>
       </div>
     </div>
