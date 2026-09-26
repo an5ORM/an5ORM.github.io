@@ -1,0 +1,26 @@
+{
+  "name": "an5-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Landing page source for https://an5orm.github.io — static site for AN5 ORM (index.html + style.css + main.js).",
+  "license": "MIT",
+  "author": "an5ORM",
+  "homepage": "https://an5orm.github.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/an5ORM/an5ORM.github.io.git"
+  },
+  "keywords": ["an5", "orm", "landing-page", "static-site"],
+  "files": [
+    "index.html",
+    "style.css",
+    "main.js",
+    "favicon.svg",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "npx --yes serve . -l 3000",
+    "preview": "npx --yes serve . -l 4173",
+    "test": "node -e \"const fs=require('fs');const f=['index.html','style.css','main.js','favicon.svg'];for(const x of f){if(!fs.existsSync(x)){console.error('missing '+x);process.exit(1)}}console.log('an5Site OK: all static assets present')\""
+  }
+}

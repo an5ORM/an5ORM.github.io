@@ -201,6 +201,7 @@ img { max-width: 100%; height: auto; }
   background: #0d1220; border: 1px solid var(--border);
   border-radius: var(--radius-lg); overflow: hidden;
   box-shadow: var(--shadow), var(--shadow-glow);
+  max-width: 100%; min-width: 0;
 }
 .code-titlebar {
   display: flex; align-items: center; gap: 6px;
@@ -265,9 +266,9 @@ img { max-width: 100%; height: auto; }
 .feature-icon {
   width: 48px; height: 48px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 16px; flex-shrink: 0;
 }
-.feature-icon svg { width: 24px; height: 24px; }
+.feature-icon svg { width: 24px; height: 24px; display: block; flex-shrink: 0; }
 .icon-blue { background: rgba(99,102,241,0.15); color: #818cf8; }
 .icon-cyan { background: rgba(56,189,248,0.12); color: var(--cyan); }
 .icon-purple { background: rgba(168,85,247,0.12); color: #c084fc; }
@@ -306,6 +307,9 @@ img { max-width: 100%; height: auto; }
 .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 @media (max-width: 960px) { .packages-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 580px) { .packages-grid { grid-template-columns: 1fr; } }
+/* Grid items default to min-width:auto → nowrap children (e.g. .pkg-install)
+   would stretch the track past the viewport on mobile. Force them to shrink. */
+.features-grid > *, .packages-grid > * { min-width: 0; }
 
 .pkg-card {
   display: flex; flex-direction: column; gap: 12px;
@@ -336,6 +340,10 @@ img { max-width: 100%; height: auto; }
 
 /* ─── Extension section ───────────────────────────────────────────────────────── */
 .ext-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+/* Grid items default to min-width:auto → long <pre> lines would stretch the
+   track past the viewport on mobile. Force them to shrink + scroll inside. */
+.ext-container > * { min-width: 0; }
+.ext-preview { min-width: 0; max-width: 100%; }
 @media (max-width: 800px) { .ext-container { grid-template-columns: 1fr; gap: 36px; } }
 .ext-info .section-title { text-align: left; }
 .ext-features { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 12px; }
@@ -455,6 +463,7 @@ img { max-width: 100%; height: auto; }
 
   .db-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .db-card { max-width: 100%; min-width: 0; padding: 20px 16px; }
+  .db-card:last-child { grid-column: span 2; } /* 5 cards → card lẻ hàng cuối full-width cho cân */
 
   .ext-info .section-title { text-align: center; }
   .ext-features li { font-size: 0.85rem; }
