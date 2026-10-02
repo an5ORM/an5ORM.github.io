@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AN5 ORM · Lightweight Type-Safe ORM for TypeScript, Python, .NET & Golang</title>
-  <meta name="description" content="AN5 ORM is a lightweight, type-safe ORM supporting TypeScript, Python, .NET, and Golang for SQL Server, PostgreSQL, MySQL, SQLite, and Google Sheets.">
+  <title>AN5 ORM · Lightweight Type-Safe ORM for TypeScript, Python, .NET, Golang &amp; Rust</title>
+  <meta name="description" content="AN5 ORM is a lightweight, type-safe ORM supporting TypeScript, Python, .NET, Golang and Rust for SQL Server, PostgreSQL, MySQL, SQLite, Google Sheets and NBase.">
   <meta property="og:title" content="AN5 ORM - Lightweight, Type-Safe ORM for Every Platform">
-  <meta property="og:description" content="Type-safe database access for TypeScript, Python, .NET & Golang. Works with SQL Server, PostgreSQL, MySQL, SQLite and Google Sheets.">
+  <meta property="og:description" content="Type-safe database access for TypeScript, Python, .NET, Golang &amp; Rust. Works with SQL Server, PostgreSQL, MySQL, SQLite, Google Sheets and NBase.">
   <meta property="og:url" content="https://an5orm.github.io/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,8 +57,8 @@
         <span class="gradient-text">for Every Platform</span>
       </h1>
       <p class="hero-subtitle">
-        Type-safe database access for <strong>TypeScript</strong>, <strong>Python</strong>, <strong>.NET</strong> &amp; <strong>Golang</strong>.<br>
-        SQL Server · PostgreSQL · MySQL · SQLite · Google Sheets
+        Type-safe database access for <strong>TypeScript</strong>, <strong>Python</strong>, <strong>.NET</strong>, <strong>Golang</strong> &amp; <strong>Rust</strong>.<br>
+        SQL Server · PostgreSQL · MySQL · SQLite · Google Sheets · NBase
       </p>
       <div class="hero-actions">
         <a href="#quickstart" class="btn btn-primary">
@@ -75,12 +75,12 @@
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">4</span>
+          <span class="stat-num">5</span>
           <span class="stat-label">Languages</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num">5+</span>
+          <span class="stat-num">6</span>
           <span class="stat-label">Databases</span>
         </div>
         <div class="stat-divider"></div>
@@ -142,7 +142,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"/></svg>
           </div>
           <h3>Multi-Platform</h3>
-          <p>One schema, multiple languages. Generate clients for TypeScript, Python, .NET (C#), and Golang simultaneously.</p>
+          <p>One schema, multiple languages. Generate clients for TypeScript, Python, .NET (C#), Golang, and Rust simultaneously.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon icon-green">
@@ -181,6 +181,7 @@
         <button class="tab-btn" data-tab="python">Python</button>
         <button class="tab-btn" data-tab="dotnet">.NET</button>
         <button class="tab-btn" data-tab="golang">Golang</button>
+        <button class="tab-btn" data-tab="rust">Rust</button>
         <button class="tab-btn" data-tab="sheets">Google Sheets</button>
       </div>
       <div class="tab-panels">
@@ -256,6 +257,35 @@ ctx <span class="c-op">:=</span> context.Background()
   },
   Take: an5.IntPtr(<span class="c-num">10</span>),
 })</pre>
+        </div>
+        <div class="tab-panel" id="tab-rust">
+          <pre class="code-block"><span class="c-comment"># Add the adapter runtime (the generated client comes from `npm run generate`)</span>
+cargo add an5-adapters
+cargo add sqlx <span class="c-op">--</span>features any,sqlserver,postgres,mysql,sqlite
+
+<span class="c-comment"># Use</span>
+<span class="c-keyword">use</span> an5_client<span class="c-punct">::{</span>An5Client<span class="c-punct">,</span> SortOrder<span class="c-punct">,</span> StringFilter<span class="c-punct">,</span> UserFindManyArgs<span class="c-punct">,</span> UserOrderByInput<span class="c-punct">,</span> UserWhereInput<span class="c-punct">};</span>
+
+<span class="c-comment">// The app picks the driver; the client stays dialect-agnostic</span>
+sqlx<span class="c-punct">::</span>any<span class="c-punct">::</span><span class="c-fn">install_drivers</span><span class="c-punct">(&amp;[</span>sqlx<span class="c-punct">::</span>postgres<span class="c-punct">::</span>any<span class="c-punct">::</span>DRIVER<span class="c-punct">])</span><span class="c-op">?;</span>
+<span class="c-keyword">let</span> <span class="c-var">db</span> <span class="c-op">=</span> An5Client<span class="c-punct">::</span><span class="c-fn">connect</span><span class="c-punct">(</span><span class="c-str">"postgres://localhost:5432/mydb"</span><span class="c-punct">).</span><span class="c-keyword">await</span><span class="c-op">?;</span>
+
+<span class="c-comment">// Type-safe query</span>
+<span class="c-keyword">let</span> <span class="c-var">users</span> <span class="c-op">=</span> <span class="c-var">db</span><span class="c-punct">.</span><span class="c-fn">user</span><span class="c-punct">().</span><span class="c-fn">find_many</span><span class="c-punct">(&amp;</span>UserFindManyArgs <span class="c-punct">{</span>
+  <span class="c-prop">where_</span><span class="c-punct">:</span> <span class="c-keyword">Some</span><span class="c-punct">(</span>UserWhereInput <span class="c-punct">{</span>
+    <span class="c-prop">email</span><span class="c-punct">:</span> <span class="c-keyword">Some</span><span class="c-punct">(</span>StringFilter <span class="c-punct">{</span>
+      <span class="c-prop">contains</span><span class="c-punct">:</span> <span class="c-keyword">Some</span><span class="c-punct">(</span><span class="c-str">"@example.com"</span><span class="c-punct">.</span><span class="c-fn">into</span><span class="c-punct">()),</span>
+      <span class="c-op">..</span><span class="c-var">Default</span><span class="c-punct">::</span><span class="c-fn">default</span><span class="c-punct">()</span>
+    <span class="c-punct">}),</span>
+    <span class="c-op">..</span><span class="c-var">Default</span><span class="c-punct">::</span><span class="c-fn">default</span><span class="c-punct">()</span>
+  <span class="c-punct">}),</span>
+  <span class="c-prop">order_by</span><span class="c-punct">:</span> <span class="c-keyword">Some</span><span class="c-punct">(</span>UserOrderByInput <span class="c-punct">{</span>
+    <span class="c-prop">created_at</span><span class="c-punct">:</span> <span class="c-keyword">Some</span><span class="c-punct">(</span>SortOrder<span class="c-punct">::</span><span class="c-fn">Desc</span><span class="c-punct">),</span>
+    <span class="c-op">..</span><span class="c-var">Default</span><span class="c-punct">::</span><span class="c-fn">default</span><span class="c-punct">()</span>
+  <span class="c-punct">}),</span>
+  <span class="c-prop">take</span><span class="c-punct">:</span> <span class="c-keyword">Some</span><span class="c-punct">(</span><span class="c-num">10</span><span class="c-punct">),</span>
+  <span class="c-op">..</span><span class="c-var">Default</span><span class="c-punct">::</span><span class="c-fn">default</span><span class="c-punct">()</span>
+<span class="c-punct">}).</span><span class="c-keyword">await</span><span class="c-op">?;</span></pre>
         </div>
         <div class="tab-panel" id="tab-sheets">
           <pre class="code-block"><span class="c-comment">// Browser-compatible! No Node.js builtins</span>
@@ -438,6 +468,11 @@ ctx <span class="c-op">:=</span> context.Background()
           <div class="db-logo">📊</div>
           <div class="db-name">Google Sheets</div>
           <div class="db-status status-beta">Browser Ready</div>
+        </div>
+        <div class="db-card">
+          <div class="db-logo">🧠</div>
+          <div class="db-name">NBase</div>
+          <div class="db-status status-beta">Vector Ready</div>
         </div>
       </div>
     </div>

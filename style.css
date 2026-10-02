@@ -463,7 +463,6 @@ img { max-width: 100%; height: auto; }
 
   .db-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .db-card { max-width: 100%; min-width: 0; padding: 20px 16px; }
-  .db-card:last-child { grid-column: span 2; } /* 5 cards → card lẻ hàng cuối full-width cho cân */
 
   .ext-info .section-title { text-align: center; }
   .ext-features li { font-size: 0.85rem; }
