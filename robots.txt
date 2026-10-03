@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://an5orm.github.io/sitemap.xml
+Sitemap: https://an5orm.github.io/an5/sitemap.xml
