@@ -326,6 +326,7 @@ img { max-width: 100%; height: auto; }
 .npm { background: rgba(203,56,55,0.15); color: #f87171; }
 .pypi { background: rgba(56,189,248,0.12); color: var(--cyan); }
 .vscode { background: rgba(99,102,241,0.15); color: #818cf8; }
+.vscode-alt { background: rgba(148,163,184,0.15); color: #94a3b8; }
 .golang { background: rgba(0,173,216,0.15); color: #00add8; }
 .example { background: rgba(16,185,129,0.15); color: #34d399; }
 .pkg-name { font-family: var(--mono); font-size: 0.95rem; font-weight: 600; color: var(--text); }
