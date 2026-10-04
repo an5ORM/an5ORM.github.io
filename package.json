@@ -10,7 +10,12 @@
     "type": "git",
     "url": "https://github.com/an5ORM/an5ORM.github.io.git"
   },
-  "keywords": ["an5", "orm", "landing-page", "static-site"],
+  "keywords": [
+    "an5",
+    "orm",
+    "landing-page",
+    "static-site"
+  ],
   "files": [
     "index.html",
     "style.css",
@@ -21,6 +26,8 @@
   "scripts": {
     "dev": "npx --yes serve . -l 3000",
     "preview": "npx --yes serve . -l 4173",
-    "test": "node -e \"const fs=require('fs');const f=['index.html','style.css','main.js','favicon.svg'];for(const x of f){if(!fs.existsSync(x)){console.error('missing '+x);process.exit(1)}}console.log('an5Site OK: all static assets present')\""
+    "test": "node -e \"const fs=require('fs');const f=['index.html','style.css','main.js','favicon.svg'];for(const x of f){if(!fs.existsSync(x)){console.error('missing '+x);process.exit(1)}}console.log('an5Site OK: all static assets present')\" && npm run --silent brand:check",
+    "brand:check": "node scripts/brand-assets.js --check",
+    "brand:sync": "node scripts/brand-assets.js"
   }
 }
